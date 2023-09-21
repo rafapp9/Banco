@@ -34,7 +34,7 @@ public abstract class ContaAbstrata {
 
 	@Override
 	public String toString() {
-		return "ContaAbstrata [cpfCnpj=" + nifNipc + ", numeroConta=" + numeroConta + ", dataCriacao=" + dataCriacao
+		return "ContaAbstrata [nifNipc=" + nifNipc + ", numeroConta=" + numeroConta + ", dataCriacao=" + dataCriacao
 				+ "]";
 	}
 
