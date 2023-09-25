@@ -18,19 +18,24 @@ public class ClienteDAOImpl implements ClienteDAO {
 
 	@Override
 	public List<ClienteAbstrato> readAll() {
-		// TODO Auto-generated method stub
 		return dataBase;
 	}
 
 	@Override
-	public ClienteAbstrato update(String nomeCliente, ClienteAbstrato cliente) {
+	public ClienteAbstrato update(String id, ClienteAbstrato cliente) {
 		return null;
 	}
 
 	@Override
 	public void delete(String nomeCliente) {
-		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public ClienteAbstrato read(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }

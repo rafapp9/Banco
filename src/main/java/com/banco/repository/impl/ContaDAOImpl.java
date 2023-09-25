@@ -32,4 +32,12 @@ public class ContaDAOImpl implements ContaDAO{
 		
 	}
 
+	@Override
+	public ContaAbstrata read(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+
 }

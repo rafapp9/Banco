@@ -40,13 +40,13 @@ public class Main {
 		
 		//Criação de clientes
 		ClienteAbstrato clienteStd1 = new ClienteStandard();
-		clienteStd1.setNomeCliente("Rafael");
-		clienteStd1.setNifNipc("123456789");
+		clienteStd1.setNome("Rafael");
+		clienteStd1.setId("123456789");
 		clienteStd1.setMontanteDepositado(2500);
 		
 		ClienteAbstrato clienteStd2 = new ClienteStandard();
-		clienteStd2.setNomeCliente("Antonio");
-		clienteStd2.setNifNipc("987654321");
+		clienteStd2.setNome("Antonio");
+		clienteStd2.setId("987654321");
 		clienteStd2.setMontanteDepositado(3500);
 		
 		
@@ -61,7 +61,7 @@ public class Main {
 				
 				
 				for(ClienteAbstrato cliente1 : cliente) {
-					System.out.println(cliente1.getNomeCliente());
+					System.out.println(cliente1.getNome());
 					
 				}
 		
