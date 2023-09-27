@@ -23,12 +23,13 @@ public class ClienteDAOImpl implements ClienteDAO {
 
 	@Override
 	public ClienteAbstrato update(String id, ClienteAbstrato cliente) {
+		//TODO
 		return null;
 	}
 
 	@Override
 	public void delete(String nomeCliente) {
-		
+		//TODO
 	}
 
 	@Override
