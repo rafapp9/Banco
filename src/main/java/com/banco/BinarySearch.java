@@ -38,15 +38,15 @@ public class BinarySearch {
 		while(left <= rigth) {
 			binaryLoop++;
 			
-			int midle = (rigth - left) / 2;
+			int midle = (rigth + left) / 2;
 			
 			if(array[midle] == target) {
 				System.out.println("Index: " + midle);
 				break;
 			}else if(array[midle] < target) {
-				left = midle - left;
+				left = midle + 1;
 			}else if(array[midle] > target) {
-				rigth = midle - rigth;
+				rigth = midle - 1;
 			}
 		}
 	
