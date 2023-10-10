@@ -10,6 +10,7 @@ public abstract class FuncionarioAbstrato extends PessoaAbstrata{
 
 	public void setOrdenado(double ordenado) {
 		this.ordenado = ordenado;
+
 	}
-	
+
 }
