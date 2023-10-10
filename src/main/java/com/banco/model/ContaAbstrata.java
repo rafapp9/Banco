@@ -4,16 +4,18 @@ import java.util.Date;
 
 public abstract class ContaAbstrata {
 
-	private String nifNipc;
+	private String Id;
 	private String numeroConta;
 	private Date dataCriacao;
+	private int montanteConta;
+	private int montanteMinimo;
 
-	public String getNifNipc() {
-		return nifNipc;
+	public String getId() {
+		return Id;
 	}
 
-	public void setNifNipc(String nifNipc) {
-		this.nifNipc = nifNipc;
+	public void setId(String Id) {
+		this.Id = Id;
 	}
 
 	public String getNumeroConta() {
@@ -34,8 +36,24 @@ public abstract class ContaAbstrata {
 
 	@Override
 	public String toString() {
-		return "ContaAbstrata [nifNipc=" + nifNipc + ", numeroConta=" + numeroConta + ", dataCriacao=" + dataCriacao
+		return "ContaAbstrata [Id=" + Id + ", numeroConta=" + numeroConta + ", dataCriacao=" + dataCriacao
 				+ "]";
+	}
+
+	public int getMontanteConta() {
+		return montanteConta;
+	}
+
+	public void setMontanteConta(int montanteConta) {
+		this.montanteConta = montanteConta;
+	}
+
+	public int getMontanteMinimo() {
+		return montanteMinimo;
+	}
+
+	public void setMontanteMinimo(int montanteMinimo) {
+		this.montanteMinimo = montanteMinimo;
 	}
 
 }
