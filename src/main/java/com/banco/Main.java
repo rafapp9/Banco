@@ -20,19 +20,28 @@ public class Main {
 		ContaAbstrata conta1 = new ContaCorrente();
 		Date d1 = new Date();
 		conta1.setDataCriacao(d1);
-		conta1.setNifNipc("12345678912");
+		conta1.setId("12345678912");
 		conta1.setNumeroConta("123456");
+		conta1.setMontanteConta(50000);
+		conta1.setMontanteMinimo(20000);
 		
 		ContaAbstrata conta2 = new ContaCorrente();
 		Date d2 = new Date();
 		conta2.setDataCriacao(d2);
-		conta2.setNifNipc("12345678912");
+		conta2.setId("12345678912");
 		conta2.setNumeroConta("123456");
+		conta2.setMontanteConta(200);
+		conta2.setMontanteMinimo(20000);
 		
 		ContaDAO repository1 = new ContaDAOImpl();
 		
+		//automatizar este processo (pesquisar random para gerar dados automaticamente java)
 		repository1.create(conta1);
 		repository1.create(conta2);
+		repository1.update("34562766");
+		repository1.readValor(500);
+		
+		
 		
 		List<ContaAbstrata> contas = repository1.readAll();
 		
@@ -43,6 +52,7 @@ public class Main {
 		clienteStd1.setNome("Rafael");
 		clienteStd1.setId("123456789");
 		clienteStd1.setMontanteDepositado(2500);
+		
 		
 		ClienteAbstrato clienteStd2 = new ClienteStandard();
 		clienteStd2.setNome("Antonio");
@@ -55,6 +65,8 @@ public class Main {
 		
 		repository2.create(clienteStd1);
 		repository2.create(clienteStd2);
+
+		
 		
 		
 		List<ClienteAbstrato> cliente = repository2.readAll();
@@ -64,6 +76,13 @@ public class Main {
 					System.out.println(cliente1.getNome());
 					
 				}
+				
+
+				
+						
+		
+			//como invocar o delete	
+		//repository1.delete("123456789");
 		
 		
 					//ignorar para já
@@ -74,6 +93,7 @@ public class Main {
 			System.out.println(conta.getNumeroConta()); 
 		}
 		
+		//List<ContaAbstrata> contas = repository1.readAll();
 		//foreach
 		for(ContaAbstrata conta : contas) {
 			System.out.println(conta.getNumeroConta());
