@@ -13,7 +13,7 @@ public class ClienteDAOImpl implements ClienteDAO {
 	@Override
 	public void create(ClienteAbstrato cliente) {
 		dataBase.add(cliente);
-		
+
 	}
 
 	@Override
@@ -22,19 +22,38 @@ public class ClienteDAOImpl implements ClienteDAO {
 	}
 
 	@Override
-	public ClienteAbstrato update(String id, ClienteAbstrato cliente) {
-		//TODO
+	public ClienteAbstrato update(String id) {
+		// TODO
+		for (int i = 0; i < dataBase.size(); i++) {
+			ClienteAbstrato cliente = dataBase.get(i);
+			if (cliente.getId().equals(id)) {
+				dataBase.set(i, cliente);
+				break;
+			}
+						
+		}
 		return null;
+		
 	}
 
+
 	@Override
-	public void delete(String nomeCliente) {
-		//TODO
+	public void delete(String id) {
+		ClienteAbstrato cliente = read(id);
+		dataBase.remove(cliente);
+
+		// ClienteAbstrato clientId = null;
+
+	
 	}
 
 	@Override
 	public ClienteAbstrato read(String id) {
-		// TODO Auto-generated method stub
+		for (ClienteAbstrato cliente : dataBase) {
+			if (cliente.getId().equals(id)) {
+				return cliente;
+			}
+		}
 		return null;
 	}
 
