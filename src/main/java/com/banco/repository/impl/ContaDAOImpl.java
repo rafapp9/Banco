@@ -58,7 +58,6 @@ public class ContaDAOImpl implements ContaDAO {
 	
 
 	@Override
-	// add um super no ContaDAO
 	public List<ContaAbstrata> readValor(double montanteFiltro) {
 		List<ContaAbstrata> filtroValor = new ArrayList<>();
 		for (ContaAbstrata conta : dataBase) {
