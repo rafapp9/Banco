@@ -1,4 +1,4 @@
-package com.banco;
+package com.banco.study;
 
 public class BinarySearch {
 	

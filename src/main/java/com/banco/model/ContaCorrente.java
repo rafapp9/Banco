@@ -4,7 +4,7 @@ public class ContaCorrente extends ContaAbstrata {
 
 	private static final double RENDIMENTO_ANUAL = 1;
 
-	public static double getRendimentoAnual() {
+	public double getRendimentoAnual() {
 		return RENDIMENTO_ANUAL;
 	}
 	

@@ -23,7 +23,6 @@ public class ClienteDAOImpl implements ClienteDAO {
 
 	@Override
 	public ClienteAbstrato update(String id) {
-		// TODO
 		for (int i = 0; i < dataBase.size(); i++) {
 			ClienteAbstrato cliente = dataBase.get(i);
 			if (cliente.getId().equals(id)) {
@@ -41,10 +40,6 @@ public class ClienteDAOImpl implements ClienteDAO {
 	public void delete(String id) {
 		ClienteAbstrato cliente = read(id);
 		dataBase.remove(cliente);
-
-		// ClienteAbstrato clientId = null;
-
-	
 	}
 
 	@Override
