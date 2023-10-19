@@ -4,18 +4,24 @@ import java.util.Date;
 
 public abstract class ContaAbstrata {
 
-	private String Id;
+	/**
+	 * nif do Cliente
+	 */
+	private String id;
 	private String numeroConta;
 	private Date dataCriacao;
 	private int montanteConta;
 	private int montanteMinimo;
 
+	/**
+	 * nif do Cliente
+	 */
 	public String getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(String Id) {
-		this.Id = Id;
+		this.id = Id;
 	}
 
 	public String getNumeroConta() {
@@ -36,7 +42,7 @@ public abstract class ContaAbstrata {
 
 	@Override
 	public String toString() {
-		return "ContaAbstrata [Id=" + Id + ", numeroConta=" + numeroConta + ", dataCriacao=" + dataCriacao
+		return "ContaAbstrata [Id=" + id + ", numeroConta=" + numeroConta + ", dataCriacao=" + dataCriacao
 				+ "]";
 	}
 

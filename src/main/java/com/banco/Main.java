@@ -44,7 +44,7 @@ public class Main {
 		
 		
 		List<ContaAbstrata> contas = repository1.readAll();
-		
+		/*
 		
 		
 		//Criação de clientes
@@ -76,7 +76,7 @@ public class Main {
 					System.out.println(cliente1.getNome());
 					
 				}
-				
+				*/
 
 				
 						
