@@ -14,6 +14,14 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 
 	@Override
 	public void create(FuncionarioAbstrato obj) {
+		
+		if (obj.getId().length() >= 9) {
+			repository.create(obj); 
+			
+		} else {
+			System.out.println("NIF Inválido");
+			
+		}
 		repository = new FuncionarioDAOImpl();
 		
 	}
