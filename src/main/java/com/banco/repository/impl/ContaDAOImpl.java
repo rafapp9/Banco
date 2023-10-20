@@ -55,7 +55,6 @@ public class ContaDAOImpl implements ContaDAO {
 
 		}
 	}
-	
 
 	@Override
 	public List<ContaAbstrata> readValor(double montanteFiltro) {

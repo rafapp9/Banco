@@ -10,14 +10,26 @@ import com.banco.service.ContaService;
 public class ContaServiceImpl implements ContaService {
 
 	private ContaDAO repository;
-	
+
 	public ContaServiceImpl() {
 		repository = new ContaDAOImpl();
 	}
-	
+
 	@Override
 	public void create(ContaAbstrata obj) {
-		repository.create(obj);
+
+				
+		if (obj.getMontanteDepositado() >= 1500) {
+			repository.create(obj);
+			System.out.println("Conta Premium");
+
+		} else if (obj.getMontanteDepositado() < 1500 && obj.getMontanteDepositado()< 20) {
+			repository.create(obj);
+			System.out.println("Conta Corrente");
+		} else {
+			System.out.println("Valor depositado insuficiente!");
+		}
+
 	}
 
 	@Override
