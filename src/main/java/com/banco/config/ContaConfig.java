@@ -5,6 +5,7 @@ import java.util.Date;
 import com.banco.model.ContaAbstrata;
 import com.banco.model.ContaCorrente;
 import com.banco.model.ContaPoupanca;
+import com.banco.model.ContaPremium;
 import com.banco.repository.ContaDAO;
 import com.banco.repository.impl.ContaDAOImpl;
 
@@ -34,12 +35,33 @@ public class ContaConfig {
 		conta4.setId("123456987");
 		conta4.setNumeroConta("123456");
 		
-		ContaDAO repository = new ContaDAOImpl();
+		ContaAbstrata conta5 = new ContaPremium();
+		conta4.setDataCriacao(d2);
+		conta4.setId("987645367");
+		conta4.setNumeroConta("748318");
 		
-		repository.create(conta1);
-		repository.create(conta2);
-		repository.create(conta3);
-		repository.create(conta4);
+		ContaAbstrata conta6 = new ContaCorrente();
+		conta4.setDataCriacao(d2);
+		conta4.setId("261738495");
+		conta4.setNumeroConta("432213");
+		
+		ContaAbstrata conta7 = new ContaPremium();
+		conta4.setDataCriacao(d2);
+		conta4.setId("235654321");
+		conta4.setNumeroConta("567875");
+		
+		
+		
+		
+		ContaDAO controller = new ContaDAOImpl();
+		
+		controller.create(conta1);
+		controller.create(conta2);
+		controller.create(conta3);
+		controller.create(conta4);
+		controller.create(conta5);
+		controller.create(conta6);
+		controller.create(conta7);
 		
 	}
 	
