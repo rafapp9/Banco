@@ -12,6 +12,7 @@ public abstract class ContaAbstrata {
 	private Date dataCriacao;
 	private int montanteConta;
 	private int montanteMinimo;
+	private double montanteDepositado;
 
 	/**
 	 * nif do Cliente
@@ -60,6 +61,14 @@ public abstract class ContaAbstrata {
 
 	public void setMontanteMinimo(int montanteMinimo) {
 		this.montanteMinimo = montanteMinimo;
+	}
+
+	public double getMontanteDepositado() {
+		return montanteDepositado;
+	}
+
+	public void setMontanteDepositado(double montanteDepositado) {
+		this.montanteDepositado = montanteDepositado;
 	}
 
 }
