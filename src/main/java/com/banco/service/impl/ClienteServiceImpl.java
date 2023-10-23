@@ -26,6 +26,7 @@ public class ClienteServiceImpl implements ClienteService {
 			System.out.println("NIF Inválido");
 			
 		}
+		
 
 	}
 
@@ -40,8 +41,8 @@ public class ClienteServiceImpl implements ClienteService {
 	}
 
 	@Override
-	public ClienteAbstrato update(String id) {
-		return repository.update(id);
+	public ClienteAbstrato update(String id, ClienteAbstrato obj) {
+		return repository.update(id, obj);
 	}
 
 	@Override

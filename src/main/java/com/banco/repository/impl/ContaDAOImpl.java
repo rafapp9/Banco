@@ -21,7 +21,8 @@ public class ContaDAOImpl implements ContaDAO {
 	}
 
 	@Override
-	public ContaAbstrata update(String id) {
+	//TODO
+	public ContaAbstrata update(String id, ContaAbstrata obj) {
 		for (int i = 0; i < dataBase.size(); i++) {
 			ContaAbstrata conta = dataBase.get(i);
 			if (conta.getId().equals(id)) {

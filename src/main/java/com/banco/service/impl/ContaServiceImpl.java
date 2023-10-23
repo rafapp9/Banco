@@ -48,8 +48,8 @@ public class ContaServiceImpl implements ContaService {
 	}
 
 	@Override
-	public ContaAbstrata update(String id) {
-		return repository.update(id);
+	public ContaAbstrata update(String id, ContaAbstrata obj) {
+		return repository.update(id, obj);
 	}
 
 	@Override

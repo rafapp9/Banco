@@ -117,17 +117,6 @@ public class FuncionarioDAOImpl implements FuncionarioDAO {
 		return dataBase[ind];
 	}
 
-	@Override
-	public FuncionarioAbstrato update(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public FuncionarioAbstrato idOrdenado(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 
 }

@@ -10,7 +10,7 @@ public interface GenericCRUD<T,V> {
 	
 	T read(V id);
 	
-	T update(V id);
+	T update(V id, T obj);
 	
 	void delete(V id);
 

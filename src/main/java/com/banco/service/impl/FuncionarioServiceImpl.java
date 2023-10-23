@@ -9,21 +9,21 @@ import com.banco.repository.impl.FuncionarioDAOImpl;
 import com.banco.service.FuncionarioService;
 
 public class FuncionarioServiceImpl implements FuncionarioService {
-	
+
 	private FuncionarioDAO repository;
 
 	@Override
 	public void create(FuncionarioAbstrato obj) {
-		
+
 		if (obj.getId().length() >= 9) {
-			repository.create(obj); 
-			
+			repository.create(obj);
+
 		} else {
 			System.out.println("NIF Inválido");
-			
+
 		}
 		repository = new FuncionarioDAOImpl();
-		
+
 	}
 
 	@Override
@@ -32,14 +32,9 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 	}
 
 	@Override
-	public FuncionarioAbstrato update(String id) {
-		return repository.update(id);
-	}
-
-	@Override
 	public void delete(String id) {
 		repository.delete(id);
-		
+
 	}
 
 	@Override
@@ -61,14 +56,6 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 	public FuncionarioAbstrato read(String id) {
 		return repository.read(id);
 	}
-
-	@Override
-	public FuncionarioAbstrato idOrdenado(String id) {
-		return repository.idOrdenado(id);
-	}
-
-	
-
 
 
 }

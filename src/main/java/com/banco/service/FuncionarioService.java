@@ -9,9 +9,5 @@ public interface FuncionarioService extends GenericCRUD<FuncionarioAbstrato, Str
 	
 	FuncionarioAbstrato updateName(String id, String name);
 
-	FuncionarioAbstrato update(String id, FuncionarioAbstrato obj);
-	FuncionarioAbstrato read(String id);
-
-	FuncionarioAbstrato idOrdenado(String id);
 
 }

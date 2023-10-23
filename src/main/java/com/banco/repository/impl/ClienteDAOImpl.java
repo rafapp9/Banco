@@ -22,7 +22,8 @@ public class ClienteDAOImpl implements ClienteDAO {
 	}
 
 	@Override
-	public ClienteAbstrato update(String id) {
+	//todo
+	public ClienteAbstrato update(String id, ClienteAbstrato obj) {
 		for (int i = 0; i < dataBase.size(); i++) {
 			ClienteAbstrato cliente = dataBase.get(i);
 			if (cliente.getId().equals(id)) {

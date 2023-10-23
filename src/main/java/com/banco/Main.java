@@ -38,7 +38,7 @@ public class Main {
 		//automatizar este processo (pesquisar random para gerar dados automaticamente java)
 		repository1.create(conta1);
 		repository1.create(conta2);
-		repository1.update("34562766");
+		repository1.update("34562766", conta1);
 		repository1.readValor(500);
 		
 		
