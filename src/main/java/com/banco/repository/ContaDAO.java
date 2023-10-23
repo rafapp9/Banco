@@ -6,8 +6,6 @@ import com.banco.model.ContaAbstrata;
 
 public interface ContaDAO extends GenericCRUD<ContaAbstrata, String> {
 
-	List<ContaAbstrata> readValor(double montanteFiltro);
-
-	
+	List<ContaAbstrata> readValor(double montanteFiltro);	
 	
 }

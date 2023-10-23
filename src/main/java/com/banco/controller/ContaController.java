@@ -3,6 +3,7 @@ package com.banco.controller;
 import java.util.List;
 
 import com.banco.model.ContaAbstrata;
+import com.banco.model.ContaDTO;
 import com.banco.service.ContaService;
 import com.banco.service.impl.ContaServiceImpl;
 
@@ -14,7 +15,7 @@ public class ContaController {
 		service = new ContaServiceImpl();
 	}
 
-	public void create(ContaAbstrata obj) {
+	public void create(ContaDTO obj) {
 		service.create(obj);
 	}
 

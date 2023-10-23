@@ -3,6 +3,15 @@ package com.banco.model;
 import java.util.Date;
 
 public abstract class ContaAbstrata {
+	
+	public ContaAbstrata() {}
+	
+	public ContaAbstrata(String id, String numeroConta, Date dataCriacao, double montanteDepositado) {
+		this.id = id;
+		this.numeroConta = numeroConta;
+		this.dataCriacao = dataCriacao;
+		this.montanteDepositado = montanteDepositado;
+	}
 
 	/**
 	 * nif do Cliente
@@ -11,8 +20,7 @@ public abstract class ContaAbstrata {
 	private String numeroConta;
 	private Date dataCriacao;
 	private int montanteConta;
-	private int montanteMinimo;
-	private double montanteDepositado;
+	private double montanteDepositado; 
 
 	/**
 	 * nif do Cliente
@@ -55,14 +63,6 @@ public abstract class ContaAbstrata {
 		this.montanteConta = montanteConta;
 	}
 
-	public int getMontanteMinimo() {
-		return montanteMinimo;
-	}
-
-	public void setMontanteMinimo(int montanteMinimo) {
-		this.montanteMinimo = montanteMinimo;
-	}
-
 	public double getMontanteDepositado() {
 		return montanteDepositado;
 	}
@@ -70,5 +70,7 @@ public abstract class ContaAbstrata {
 	public void setMontanteDepositado(double montanteDepositado) {
 		this.montanteDepositado = montanteDepositado;
 	}
+	
+	public abstract String getTpConta();
 
 }

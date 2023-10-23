@@ -3,6 +3,7 @@ package com.banco.service.impl;
 import java.util.List;
 
 import com.banco.model.ContaAbstrata;
+import com.banco.model.ContaDTO;
 import com.banco.repository.ContaDAO;
 import com.banco.repository.impl.ContaDAOImpl;
 import com.banco.service.ContaService;
@@ -16,19 +17,14 @@ public class ContaServiceImpl implements ContaService {
 	}
 
 	@Override
+	public void create(ContaDTO contaDTO) {
+		ContaAbstrata conta = FactoryConta.getConta(contaDTO);
+		create(conta);
+	}
+	
+	@Override
 	public void create(ContaAbstrata obj) {
-
-
-		if (obj.getMontanteDepositado() >= 1500) {
-			repository.create(obj);
-			System.out.println("Conta Premium");
-
-		} else if (obj.getMontanteDepositado() < 1500 && obj.getMontanteDepositado()< 20) {
-			repository.create(obj);
-			System.out.println("Conta Corrente");
-		} else {
-			System.out.println("Valor depositado insuficiente!");
-		} 
+		repository.create(obj);
 
 	}
 

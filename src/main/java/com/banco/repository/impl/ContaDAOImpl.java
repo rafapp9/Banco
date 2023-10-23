@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.banco.model.ContaAbstrata;
+import com.banco.model.ContaDTO;
 import com.banco.repository.ContaDAO;
 
 public class ContaDAOImpl implements ContaDAO {
 
 	private static List<ContaAbstrata> dataBase = new ArrayList<>();
-
+	
 	@Override
 	public void create(ContaAbstrata conta) {
 		dataBase.add(conta);

@@ -1,4 +1,4 @@
-package com.banco;
+package com.banco.study;
 
 import com.banco.model.FuncionarioAbstrato;
 import com.banco.model.FuncionarioGerente;

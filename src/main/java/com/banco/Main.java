@@ -23,7 +23,7 @@ public class Main {
 		conta1.setId("12345678912");
 		conta1.setNumeroConta("123456");
 		conta1.setMontanteConta(50000);
-		conta1.setMontanteMinimo(20000);
+		
 		
 		ContaAbstrata conta2 = new ContaCorrente();
 		Date d2 = new Date();
@@ -31,7 +31,7 @@ public class Main {
 		conta2.setId("12345678912");
 		conta2.setNumeroConta("123456");
 		conta2.setMontanteConta(200);
-		conta2.setMontanteMinimo(20000);
+		
 		
 		ContaDAO repository1 = new ContaDAOImpl();
 		
