@@ -26,6 +26,7 @@ public class MainConta {
 		conta2.setId("12345");
 		conta2.setNumeroConta("123456");
 		conta2.setMontanteConta(200);
+		
 	
 		
 		ContaDAO repository1 = new ContaDAOImpl();
@@ -33,11 +34,20 @@ public class MainConta {
 		repository1.create(conta1);
 		repository1.create(conta2);
 		
+		System.out.println(conta2.getId());
+		
+		
+		
 		List<ContaAbstrata> readValor = repository1.readValor(500);
 		
 		for(ContaAbstrata conta : readValor) {
 			System.out.println(conta.getId() + " - " + conta.getMontanteConta());
 			
+		}
+		
+		List<ContaAbstrata> readConta = repository1.readAll();
+		for(ContaAbstrata conta : readConta) {
+			System.out.println(conta2.getId() + " - " + conta2.getNumeroConta());
 		}
 
 	}

@@ -50,7 +50,6 @@ public class FuncionarioDAOImpl implements FuncionarioDAO {
 	}
 
 	@Override
-	// criei super no FuncionarioDAO
 	public FuncionarioAbstrato update(String id, FuncionarioAbstrato obj) {
 		int index = this.readIndex(id);
 		dataBase[index] = obj;

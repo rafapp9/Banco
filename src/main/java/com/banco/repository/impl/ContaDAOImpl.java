@@ -1,85 +1,53 @@
 package com.banco.repository.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.banco.model.ContaAbstrata;
-import com.banco.model.ContaDTO;
 import com.banco.repository.ContaDAO;
 
 public class ContaDAOImpl implements ContaDAO {
+    private Map<String, ContaAbstrata> dataBase = new HashMap<>();
 
-	private static List<ContaAbstrata> dataBase = new ArrayList<>();
-	
-	@Override
-	public void create(ContaAbstrata conta) {
-		dataBase.add(conta);
-	}
+    @Override
+    public void create(ContaAbstrata conta) {
+        dataBase.put(conta.getId(), conta);
+    }
 
-	@Override
-	public List<ContaAbstrata> readAll() {
-		return dataBase;
-	}
+    @Override
+    //retorna uma lista de todas as contas convertendo os valores do map dataBase em uma lista.
+    public List<ContaAbstrata> readAll() {
+        return List.copyOf(dataBase.values());
+    }
 
-	@Override
-	//TODO
-	public ContaAbstrata update(String id, ContaAbstrata obj) {
-		for (int i = 0; i < dataBase.size(); i++) {
-			ContaAbstrata conta = dataBase.get(i);
-			if (conta.getId().equals(id)) {
-				dataBase.set(i, conta);
-				break;
+    @Override
+    public ContaAbstrata update(String id, ContaAbstrata obj) {
+        if (dataBase.containsKey(id)) {
+            dataBase.put(id, obj);
+        }
+        return obj;
+    }
 
-			}
+    @Override
+    public ContaAbstrata read(String id) {
+        return dataBase.get(id);
+    }
 
-		}
-		return null;
+    @Override
+    public void delete(String id) {
+        dataBase.remove(id);
+    }
 
-	}
-
-	@Override
-	public ContaAbstrata read(String id) {
-		for (ContaAbstrata conta : dataBase) {
-			if (conta.getId().equals(id)) {
-				return conta;
-			}
-		}
-		return null;
-	}
-
-	@Override
-	public void delete(String id) {
-		for (ContaAbstrata conta : dataBase) {
-			if (conta.getId().equals(id)) {
-				dataBase.remove(conta);
-				break;
-			}
-
-		}
-	}
-
-	@Override
-	public List<ContaAbstrata> readValor(double montanteFiltro) {
-		List<ContaAbstrata> filtroValor = new ArrayList<>();
-		for (ContaAbstrata conta : dataBase) {
-			if (conta.getMontanteConta() >= montanteFiltro) {
-				filtroValor.add(conta);
-
-			}
-		}
-		return filtroValor;
-	}
-
-	// @Override
-	// public ContaAbstrata read(String id) {
-	// TODO Auto-generated method stub
-	// return null;
-//	}
-
-	/*
-	 * @Override public ContaAbstrata read(String montanteConta) { for
-	 * (ContaAbstrata conta : dataBase) { if
-	 * (conta.getMontanteConta().equals(montanteConta)) { return conta; }
-	 */
-
+    @Override
+    public List<ContaAbstrata> readValor(double montanteFiltro) {
+        List<ContaAbstrata> filtroValor = new ArrayList<>();
+        for (ContaAbstrata conta : dataBase.values()) {
+            if (conta.getMontanteConta() >= montanteFiltro) {
+                filtroValor.add(conta);
+            }
+        }
+        return filtroValor;
+    }
 }
