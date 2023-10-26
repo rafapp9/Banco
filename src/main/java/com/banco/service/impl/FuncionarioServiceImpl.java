@@ -2,8 +2,8 @@ package com.banco.service.impl;
 
 import java.util.List;
 
+import com.banco.model.ContaAbstrata;
 import com.banco.model.FuncionarioAbstrato;
-import com.banco.repository.ClienteDAO;
 import com.banco.repository.FuncionarioDAO;
 import com.banco.repository.impl.FuncionarioDAOImpl;
 import com.banco.service.FuncionarioService;
@@ -15,22 +15,21 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 	@Override
 	public void create(FuncionarioAbstrato obj) {
 		if (obj.getId().length() == 9) {
-			boolean idExists = false;
+			
+			List<FuncionarioAbstrato> ListaId = repository.readAll();
 
-			for (FuncionarioAbstrato existenciaId : repository.readAll()) {
+			for (FuncionarioAbstrato existenciaId : ListaId) {
 				if (existenciaId.getId().equals(obj.getId())) {
-					idExists = true;
+					System.out.println("NIF já existe");
 					break;
-				}
-			}
 
-			if (!idExists) {
+				} 
 				repository.create(obj);
+
+			} 
+			
 			} else {
-				System.out.println("NIF já existe");
-			}
-		} else {
-			System.out.println("NIF Inválido");
+				System.out.println("NIF Inválido");
 		}
 
 	}
