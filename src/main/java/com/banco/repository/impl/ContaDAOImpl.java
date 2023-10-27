@@ -41,7 +41,7 @@ public class ContaDAOImpl implements ContaDAO {
     }
 
     @Override
-    public List<ContaAbstrata> readValor(double montanteFiltro) {
+    public List<ContaAbstrata> filterAccountByAmount (double montanteFiltro) {
         List<ContaAbstrata> filtroValor = new ArrayList<>();
         for (ContaAbstrata conta : dataBase.values()) {
             if (conta.getMontanteConta() >= montanteFiltro) {

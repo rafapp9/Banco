@@ -39,7 +39,7 @@ public class Main {
 		repository1.create(conta1);
 		repository1.create(conta2);
 		repository1.update("34562766", conta1);
-		repository1.readValor(500);
+		repository1.filterAccountByAmount(500);
 		
 		
 		

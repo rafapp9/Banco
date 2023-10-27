@@ -55,8 +55,8 @@ public class ContaServiceImpl implements ContaService {
 	}
 
 	@Override
-	public List<ContaAbstrata> readValor(double montanteFiltro) {
-		return repository.readValor(montanteFiltro);
+	public List<ContaAbstrata> filterAccountByAmount(double montanteFiltro) {
+		return repository.filterAccountByAmount(montanteFiltro);
 	}
 
 }

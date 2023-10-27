@@ -27,4 +27,8 @@ public class ContaController {
 		return service.readAll();
 	}
 
+	public List<ContaAbstrata> filterAccountByAmount(double i) {
+		return service.filterAccountByAmount(i);
+	}
+
 }
