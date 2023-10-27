@@ -3,6 +3,7 @@ package com.banco.service.impl;
 import java.util.List;
 
 import com.banco.model.ClienteAbstrato;
+import com.banco.model.FuncionarioAbstrato;
 import com.banco.repository.ClienteDAO;
 import com.banco.repository.impl.ClienteDAOImpl;
 import com.banco.service.ClienteService;
@@ -17,16 +18,23 @@ public class ClienteServiceImpl implements ClienteService {
 
 	@Override
 	public void create(ClienteAbstrato obj) {
-		repository.create(obj);
-		
-		if (obj.getId().length() >= 9) {
-			repository.create(obj); 
-			
+		if (obj.getId().length() == 9) {
+
+			List<ClienteAbstrato> ListaId = repository.readAll();
+
+			for (ClienteAbstrato existenciaId : ListaId) {
+				if (existenciaId.getId().equals(obj.getId())) {
+					System.out.println("NIF já existe");
+					break;
+
+				}
+				repository.create(obj);
+
+			}
+
 		} else {
 			System.out.println("NIF Inválido");
-			
 		}
-		
 
 	}
 
