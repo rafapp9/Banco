@@ -20,6 +20,7 @@ public class MainBank {
 		while (option != 99) {
 
 			System.out.println(ConstantsGUI.MENU_CONTAS.getValue());
+			System.out.println(ConstantsGUI.MENU_CLIENTES.getValue());
 			option = scan.nextInt();
 
 			if (option == 1) {
