@@ -2,7 +2,6 @@ package com.banco.service.impl;
 
 import java.util.List;
 
-import com.banco.model.ContaAbstrata;
 import com.banco.model.FuncionarioAbstrato;
 import com.banco.repository.FuncionarioDAO;
 import com.banco.repository.impl.FuncionarioDAOImpl;
