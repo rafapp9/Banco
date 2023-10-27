@@ -2,6 +2,7 @@ package com.banco.config;
 
 import java.util.Date;
 
+import com.banco.controller.ContaController;
 import com.banco.model.ContaAbstrata;
 import com.banco.model.ContaCorrente;
 import com.banco.model.ContaPoupanca;
@@ -13,6 +14,7 @@ public class ContaConfig {
 
 	public static void start() {
 		
+	
 		ContaAbstrata conta1 = new ContaCorrente();
 		Date d1 = new Date();
 		conta1.setDataCriacao(d1);
@@ -50,10 +52,7 @@ public class ContaConfig {
 		conta4.setId("235654321");
 		conta4.setNumeroConta("567875");
 		
-		
-		
-		
-		ContaDAO controller = new ContaDAOImpl();
+		ContaController controller = new ContaController();
 		
 		controller.create(conta1);
 		controller.create(conta2);

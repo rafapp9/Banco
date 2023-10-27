@@ -9,7 +9,7 @@ import com.banco.model.ContaAbstrata;
 import com.banco.repository.ContaDAO;
 
 public class ContaDAOImpl implements ContaDAO {
-    private Map<String, ContaAbstrata> dataBase = new HashMap<>();
+    private static Map<String, ContaAbstrata> dataBase = new HashMap<>();
 
     @Override
     public void create(ContaAbstrata conta) {

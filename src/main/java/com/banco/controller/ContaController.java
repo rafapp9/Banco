@@ -18,6 +18,10 @@ public class ContaController {
 	public void create(ContaDTO obj) {
 		service.create(obj);
 	}
+	
+	public void create(ContaAbstrata obj) {
+		service.create(obj);
+	}
 
 	public ContaAbstrata read(String id) {
 		return service.read(id);
