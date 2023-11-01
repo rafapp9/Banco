@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.banco.model.FuncionarioAbstrato;
+import com.banco.model.FuncionarioGerente;
 import com.banco.repository.FuncionarioDAO;
 
 public class FuncionarioDAOImpl implements FuncionarioDAO {
@@ -114,6 +115,20 @@ public class FuncionarioDAOImpl implements FuncionarioDAO {
 		int ind = readIndex(id);
 		dataBase[ind].setNome(name);
 		return dataBase[ind];
+	}
+
+	@Override
+	public List<FuncionarioAbstrato> filterFuncsByGoal(double amount) {
+		List<FuncionarioAbstrato> filter = new ArrayList<>();
+		for(FuncionarioAbstrato f : dataBase) {
+			if(f instanceof FuncionarioGerente ) {
+				FuncionarioGerente gerente = (FuncionarioGerente) f;
+				if(gerente.getVendaMensal() == amount) {
+					filter.add(gerente);
+				}
+			}
+		}
+		return filter;
 	}
 
 

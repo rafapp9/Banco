@@ -11,6 +11,10 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 
 	private FuncionarioDAO repository;
 
+	public FuncionarioServiceImpl() {
+		repository = new FuncionarioDAOImpl();
+	}
+	
 	@Override
 	public void create(FuncionarioAbstrato obj) {
 		if (obj.getId().length() == 9) {
@@ -56,6 +60,11 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 	@Override
 	public List<FuncionarioAbstrato> readAll() {
 		return repository.readAll();
+	}
+
+	@Override
+	public List<FuncionarioAbstrato> filterFuncsByGoal(double amount) {
+		return repository.filterFuncsByGoal(amount);
 	}
 
 }

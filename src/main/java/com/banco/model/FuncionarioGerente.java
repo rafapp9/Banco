@@ -9,7 +9,7 @@ public class FuncionarioGerente extends FuncionarioAbstrato {
 	 * @param vendaMensal
 	 */
 	public FuncionarioGerente(String id, String nome, double vendaMensal) {
-		this.vendaMensal = vendaMensal;
+		setVendaMensal(vendaMensal);
 		super.setId(id);
 		super.setNome(nome);
 	}

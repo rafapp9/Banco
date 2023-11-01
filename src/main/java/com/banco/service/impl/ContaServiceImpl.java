@@ -22,10 +22,11 @@ public class ContaServiceImpl implements ContaService {
 	public void create(ContaDTO contaDTO) {
 		if(contaDTO.id().isBlank()) {
 			System.out.println("NIF Obrigatório!");
-			
+		}else {
+			ContaAbstrata conta = FactoryConta.getConta(contaDTO);
+			create(conta);
 		}
-		ContaAbstrata conta = FactoryConta.getConta(contaDTO);
-		create(conta);
+		
 	}
 	
 	@Override
