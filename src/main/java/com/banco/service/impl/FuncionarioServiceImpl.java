@@ -14,21 +14,15 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 	@Override
 	public void create(FuncionarioAbstrato obj) {
 		if (obj.getId().length() == 9) {
-			
-			List<FuncionarioAbstrato> ListaId = repository.readAll();
 
-			for (FuncionarioAbstrato existenciaId : ListaId) {
-				if (existenciaId.getId().equals(obj.getId())) {
-					System.out.println("NIF já existe");
-					break;
-
-				} 
-				repository.create(obj);
-
-			} 
-			
+			if (this.read(obj.getId()) != null) {
+				System.out.println("NIF já existe");
 			} else {
-				System.out.println("NIF Inválido");
+				repository.create(obj);
+			}
+
+		} else {
+			System.out.println("NIF Inválido");
 		}
 
 	}
@@ -61,8 +55,7 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 
 	@Override
 	public List<FuncionarioAbstrato> readAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return repository.readAll();
 	}
 
 }
