@@ -6,20 +6,21 @@ import static org.junit.Assert.assertNull;
 
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.TestMethodOrder;
 
+import com.banco.model.ClienteAbstrato;
+import com.banco.model.ClienteStandard;
 import com.banco.model.ContaAbstrata;
 import com.banco.model.ContaDTO;
+import com.banco.service.impl.ClienteServiceImpl;
 import com.banco.service.impl.ContaServiceImpl;
 
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+
 public class ContaServiceTest {
 	
+	@Before
 	@Test
-	@Order(1)
 	public void readAll() {
 		ContaDTO conta = new ContaDTO("123456789", "245678", 500);
 		ContaDTO conta1 = new ContaDTO("987654321", "78643", 1500);
@@ -31,8 +32,8 @@ public class ContaServiceTest {
 
 	}
 	
+	@Before
 	@Test
-	@Order(2)
 	public void createContaNifOk() {
 		ContaDTO conta = new ContaDTO("123456785", "9456778", 500);
 		ContaService service = new ContaServiceImpl();
@@ -41,8 +42,8 @@ public class ContaServiceTest {
 		assertEquals("123456789", contaRead.getId());
 	}
 
+	@Before
 	@Test
-	@Order(3)
 	public void createContaNifBlank() {
 		ContaDTO conta = new ContaDTO("", "9456778", 500);
 		ContaService service = new ContaServiceImpl();
@@ -51,17 +52,31 @@ public class ContaServiceTest {
 		assertNull(contaRead);
 	}
 	
-/*	@Test //olhar para factoryConta
+	@Before
+	@Test
 	public void update() {
 		ContaDTO conta = new ContaDTO("123456789", "245678", 500);
 	    ContaService service = new ContaServiceImpl();   
 	    service.create(conta);
-	    service.update("123456789", new contaDTO);
-	    ContaDTO clienteRead = service.read("123456789");
-	    assertEquals(1000.0, clienteRead.montanteInicial(), 0.01);
+	    service.update("123456789", conta);
+	    ContaAbstrata contaRead = service.read("123456789");
+	    assertEquals(1000.0, contaRead.getMontanteConta(), 0.01);
 	}
 	
-*/
+	@Before
+	@Test
+	public void delete() {
+		ContaDTO conta = new ContaDTO("123456789", "245678", 500);
+		ContaDTO conta1 = new ContaDTO("986848388", "098647", 1500);
+		ContaService service = new ContaServiceImpl();
+		service.create(conta);
+		service.create(conta1);
+		service.delete("923456779");
+		ContaAbstrata contaEliminada = service.read("923456779");
+		assertNull(contaEliminada);
+	}
+	
+
 	
 	
 }

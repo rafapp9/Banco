@@ -10,10 +10,10 @@ import com.banco.model.ContaPremium;
 public class FactoryConta {
 
 	public static ContaAbstrata getConta(ContaDTO contaDTO) {
-		if(contaDTO.montanteInicial() >= 1500) {
-			return new ContaPremium(contaDTO.id(), contaDTO.numeroDaConta(), new Date(), contaDTO.montanteInicial());
-		}else if(contaDTO.montanteInicial() < 1500 && contaDTO.montanteInicial() > 20) {
-			return new ContaCorrente(contaDTO.id(), contaDTO.numeroDaConta(), new Date(), contaDTO.montanteInicial());
+		if(contaDTO.montanteConta() >= 1500) {
+			return new ContaPremium(contaDTO.id(), contaDTO.numeroDaConta(), new Date(), contaDTO.montanteConta());
+		}else if(contaDTO.montanteConta() < 1500 && contaDTO.montanteConta() > 20) {
+			return new ContaCorrente(contaDTO.id(), contaDTO.numeroDaConta(), new Date(), contaDTO.montanteConta());
 		}
 		return null;
 	}

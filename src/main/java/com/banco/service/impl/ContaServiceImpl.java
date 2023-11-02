@@ -60,4 +60,10 @@ public class ContaServiceImpl implements ContaService {
 		return repository.filterAccountByAmount(montanteFiltro);
 	}
 
+	@Override
+	public ContaDTO update(String id, ContaDTO conta) {
+		return repository.update(id, conta);
+			
+	}
+
 }
