@@ -43,7 +43,14 @@ public class Main {
 		
 		
 		
-		List<ContaAbstrata> contas = repository1.readAll();
+		
+		
+	/*	List<ContaAbstrata> contas = repository1.readAll();
+		
+		for(ContaAbstrata conta1 : contas) {
+			System.out.println(conta1.getId());
+			
+		}
 		/*
 		
 		

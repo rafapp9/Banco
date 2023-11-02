@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import com.banco.model.FuncionarioAbstrato;
@@ -12,6 +14,7 @@ import com.banco.service.impl.FuncionarioServiceImpl;
 
 public class FuncionarioServiceTest {
 
+	@Before
 	@Test
 	public void create() {
 		FuncionarioAbstrato funcionario = new FuncionarioGerente("123456789", "Rafael Cunha", 200);
@@ -21,6 +24,7 @@ public class FuncionarioServiceTest {
 		assertEquals("123456789", funcionarioRead.getId());
 	}
 	
+	@Before
 	@Test
 	public void createNifExist() {
 		FuncionarioAbstrato cliente = new FuncionarioGerente("123456789", "Rafael Cunha", 500);
@@ -28,18 +32,20 @@ public class FuncionarioServiceTest {
 		FuncionarioService service = new FuncionarioServiceImpl();
 		service.create(cliente);
 		service.create(cliente2);
-		FuncionarioAbstrato clienteRead = service.read("123456789");
-		assertEquals("123456789", clienteRead.getId());
+		FuncionarioAbstrato funcionarioRead = service.read("123456789");
+		assertEquals("123456789", funcionarioRead.getId());
 	}
 
+	@Before
 	@Test
 	public void createNifMenor() {
-		FuncionarioAbstrato cliente = new FuncionarioGerente("12345678", "Rafael Cunha", 500);
+		FuncionarioAbstrato funcionario = new FuncionarioGerente("12345678", "Rafael Cunha", 500);
 		FuncionarioService service = new FuncionarioServiceImpl();
-		service.create(cliente);
+		service.create(funcionario);
 		assertEquals(null, service.read("12345678"));
 	}
 	
+	@Before
 	@Test
 	public void filterFuncsByGoal() {
 		FuncionarioService service = new FuncionarioServiceImpl();
@@ -56,6 +62,13 @@ public class FuncionarioServiceTest {
 		assertEquals(filter.get(2).getId(), "987654325");
 		
 	}
+	
+	@Before
+	@Test
+	public void update() {
+		
+	}
+	
 
 
 }
