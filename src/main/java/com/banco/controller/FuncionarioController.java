@@ -19,5 +19,13 @@ public class FuncionarioController {
 	public FuncionarioAbstrato read(String id) {
 		return service.read(id);
 	}
+	
+	public FuncionarioAbstrato update(String id, FuncionarioAbstrato obj) {
+		return service.update(id, obj);
+	}
+	
+	public void delete(String id) {
+		service.delete(id);
+	}
 
 }
