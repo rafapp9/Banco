@@ -2,10 +2,9 @@ package com.banco.service.impl;
 
 import java.util.List;
 
-import com.banco.model.ClienteAbstrato;
+import com.banco.exceptions.ContaValidateException;
 import com.banco.model.ContaAbstrata;
 import com.banco.model.ContaDTO;
-import com.banco.model.FuncionarioAbstrato;
 import com.banco.repository.ContaDAO;
 import com.banco.repository.impl.ContaDAOImpl;
 import com.banco.service.ContaService;
@@ -19,9 +18,9 @@ public class ContaServiceImpl implements ContaService {
 	}
 
 	@Override
-	public void create(ContaDTO contaDTO) {
-		if(contaDTO.id().isBlank()) {
-			System.out.println("NIF Obrigatório!");
+	public void create(ContaDTO contaDTO) throws ContaValidateException {
+		if(contaDTO.id() == null || contaDTO.id().isBlank()) {
+			throw new ContaValidateException();
 		}else {
 			ContaAbstrata conta = FactoryConta.getConta(contaDTO);
 			create(conta);
@@ -58,12 +57,6 @@ public class ContaServiceImpl implements ContaService {
 	@Override
 	public List<ContaAbstrata> filterAccountByAmount(double montanteFiltro) {
 		return repository.filterAccountByAmount(montanteFiltro);
-	}
-
-	@Override
-	public ContaDTO update(String id, ContaDTO conta) {
-		return repository.update(id, conta);
-			
 	}
 
 }

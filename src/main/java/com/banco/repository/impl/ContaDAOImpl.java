@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.banco.model.ContaAbstrata;
-import com.banco.model.ContaDTO;
 import com.banco.repository.ContaDAO;
 
 public class ContaDAOImpl implements ContaDAO {
@@ -51,12 +50,4 @@ public class ContaDAOImpl implements ContaDAO {
         }
         return filtroValor;
     }
-
-	@Override
-	public ContaDTO update(String id, ContaDTO conta) {
-        if (dataBase.containsKey(id)) {
-            dataBase.put(id, conta);
-        }
-        return conta;
-	}
 }
