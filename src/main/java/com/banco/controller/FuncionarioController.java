@@ -1,5 +1,7 @@
 package com.banco.controller;
 
+import java.util.List;
+
 import com.banco.model.FuncionarioAbstrato;
 import com.banco.service.FuncionarioService;
 import com.banco.service.impl.FuncionarioServiceImpl;
@@ -24,8 +26,17 @@ public class FuncionarioController {
 		return service.update(id, obj);
 	}
 	
+	public List<FuncionarioAbstrato> readlAll() {
+		return service.readAll();
+		
+	}
+	
 	public void delete(String id) {
 		service.delete(id);
+	}
+
+	public List<FuncionarioAbstrato> filterFuncsByGoal(double amount) {
+		return filterFuncsByGoal(amount);
 	}
 
 }

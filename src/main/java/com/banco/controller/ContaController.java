@@ -25,10 +25,6 @@ public class ContaController {
 	}
 
 
-	public void create(ContaController obj) {
-		service.create(obj);
-	}
-
 	public ContaAbstrata read(String id) {
 		return service.read(id);
 	}

@@ -1,4 +1,4 @@
-package com.banco.service;
+package com.banco.controller;
 
 import static org.junit.Assert.assertEquals;
 
@@ -8,20 +8,18 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.banco.model.ClienteAbstrato;
-import com.banco.model.ClienteStandard;
 import com.banco.model.FuncionarioAbstrato;
 import com.banco.model.FuncionarioGerente;
-import com.banco.service.impl.ClienteServiceImpl;
+import com.banco.service.FuncionarioService;
 import com.banco.service.impl.FuncionarioServiceImpl;
 
-public class FuncionarioServiceTest {
+public class FuncionarioControllerTest {
 
 	@Before
 	@Test
 	public void create() {
 		FuncionarioAbstrato funcionario = new FuncionarioGerente("123456789", "Rafael Cunha", 200);
-		FuncionarioService service = new FuncionarioServiceImpl();
+		FuncionarioController service = new FuncionarioController();
 		service.create(funcionario);
 		FuncionarioAbstrato funcionarioRead = service.read("123456789");
 		assertEquals("123456789", funcionarioRead.getId());
@@ -32,7 +30,7 @@ public class FuncionarioServiceTest {
 	public void createNifExist() {
 		FuncionarioAbstrato funcionario = new FuncionarioGerente("123456789", "Rafael Cunha", 500);
 		FuncionarioAbstrato funcionario1 = new FuncionarioGerente("123456789", "Antonio Cunha", 500);
-		FuncionarioService service = new FuncionarioServiceImpl();
+		FuncionarioController service = new FuncionarioController();
 		service.create(funcionario);
 		service.create(funcionario1);
 		FuncionarioAbstrato funcionarioRead = service.read("123456789");
@@ -43,7 +41,7 @@ public class FuncionarioServiceTest {
 	@Test
 	public void createNifMenor() {
 		FuncionarioAbstrato funcionario = new FuncionarioGerente("12345678", "Rafael Cunha", 500);
-		FuncionarioService service = new FuncionarioServiceImpl();
+		FuncionarioController service = new FuncionarioController();
 		service.create(funcionario);
 		assertEquals(null, service.read("12345678"));
 	}
@@ -51,7 +49,7 @@ public class FuncionarioServiceTest {
 	@Before
 	@Test
 	public void filterFuncsByGoal() {
-		FuncionarioService service = new FuncionarioServiceImpl();
+		FuncionarioController service = new FuncionarioController();
 		service.create(new FuncionarioGerente("987654321", "Rafael Cunha", 100));
 		service.create(new FuncionarioGerente("987654322", "Rafael Cunha", 100));
 		service.create(new FuncionarioGerente("987654323", "Rafael Cunha", 1000));
@@ -70,7 +68,7 @@ public class FuncionarioServiceTest {
 	@Test
 	public void update() {
 		FuncionarioAbstrato funcionario = new FuncionarioGerente("987654323", "Rafael Cunha", 1000);
-		FuncionarioService service = new FuncionarioServiceImpl();
+		FuncionarioController service = new FuncionarioController();
 		service.create(funcionario);
 		funcionario.setNome("Novo Nome");
 		service.update("987654323", funcionario);
