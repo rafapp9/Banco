@@ -46,7 +46,7 @@ public class ClienteControllerTest {
 		assertEquals(null, service.read("12345678"));
 	}
 
-/*	@Before
+	@Before
 	@Test
 	public void readAll() {
 		ClienteAbstrato cliente = new ClienteStandard("123456789", "Rafael Cunha", 500);
@@ -79,13 +79,13 @@ public class ClienteControllerTest {
 	public void delete() {
 		ClienteAbstrato cliente = new ClienteStandard("123456789", "Rafael Cunha", 500);
 		ClienteAbstrato cliente2 = new ClienteStandard("923456779", "Antonio Serra", 500);
-		ClienteController service = new ClienteServiceImpl();
+		ClienteController service = new ClienteController();
 		service.create(cliente);
 		service.create(cliente2);
 		service.delete("923456779");
 		ClienteAbstrato clienteEliminado = service.read("923456779");
 		assertNull(clienteEliminado);
 
-	} */
+	} 
 
 }
