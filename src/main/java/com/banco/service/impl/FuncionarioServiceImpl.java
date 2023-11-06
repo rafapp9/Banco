@@ -2,6 +2,7 @@ package com.banco.service.impl;
 
 import java.util.List;
 
+import com.banco.exceptions.NifException;
 import com.banco.model.FuncionarioAbstrato;
 import com.banco.repository.FuncionarioDAO;
 import com.banco.repository.impl.FuncionarioDAOImpl;
@@ -16,17 +17,17 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 	}
 	
 	@Override
-	public void create(FuncionarioAbstrato obj) {
+	public void create(FuncionarioAbstrato obj) throws NifException {
 		if (obj.getId().length() == 9) {
 
 			if (this.read(obj.getId()) != null) {
-				System.out.println("NIF já existe");
+				throw new NifException();
 			} else {
 				repository.create(obj);
 			}
 
 		} else {
-			System.out.println("NIF Inválido");
+			throw new NifException();
 		}
 
 	}

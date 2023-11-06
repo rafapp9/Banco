@@ -3,7 +3,7 @@ package com.banco.service.impl;
 import java.util.List;
 
 import com.banco.exceptions.ClienteValidateException;
-import com.banco.exceptions.ContaValidateException;
+import com.banco.exceptions.NifException;
 import com.banco.model.ClienteAbstrato;
 import com.banco.repository.ClienteDAO;
 import com.banco.repository.impl.ClienteDAOImpl;
@@ -18,18 +18,18 @@ public class ClienteServiceImpl implements ClienteService {
 	}
 
 	@Override
-	public void create(ClienteAbstrato obj) throws ClienteValidateException {
+	public void create(ClienteAbstrato obj) throws NifException {
 		
 		if (obj.getId().length() == 9) {
 			
 			if(this.read(obj.getId()) != null) {
-				throw new ClienteValidateException();
+				throw new NifException();
 			}else {
 				repository.create(obj);
 			}
 			
 		} else {
-			System.out.println("NIF Inválido");
+			throw new NifException();
 		}
 
 	}
