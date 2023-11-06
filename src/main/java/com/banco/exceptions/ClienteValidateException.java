@@ -1,6 +1,7 @@
 package com.banco.exceptions;
 
-public class ContaValidateException extends NullPointerException {
+public class ClienteValidateException extends IllegalArgumentException {
+	
 
 	/**
 	 * 
