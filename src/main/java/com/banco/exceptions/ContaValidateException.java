@@ -1,9 +1,8 @@
 package com.banco.exceptions;
 
-public class ContaValidateException extends NullPointerException {
-
-	/**
-	 * 
-	 */
+public class ContaValidateException extends IllegalArgumentException {
+	
 	private static final long serialVersionUID = 1L;
+
+
 }
