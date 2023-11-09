@@ -36,4 +36,9 @@ public class ContaController {
 		return service.filterAccountByAmount(i);
 	}
 
+	public ContaAbstrata update(String string, ContaAbstrata obj) {
+		return service.update(string, obj);
+		
+	}
+
 }

@@ -6,11 +6,11 @@ public abstract class ContaAbstrata {
 	
 	public ContaAbstrata() {}
 	
-	public ContaAbstrata(String id, String numeroConta, Date dataCriacao, double montanteDepositado) {
+	public ContaAbstrata(String id, String numeroConta, Date dataCriacao, double montanteConta) {
 		this.id = id;
 		this.numeroConta = numeroConta;
 		this.dataCriacao = dataCriacao;
-		this.montanteDepositado = montanteDepositado;
+		this.montanteConta = montanteConta;
 	}
 
 	/**
@@ -19,8 +19,7 @@ public abstract class ContaAbstrata {
 	private String id;
 	private String numeroConta;
 	private Date dataCriacao;
-	private int montanteConta;
-	private double montanteDepositado; 
+	private double montanteConta;
 
 	/**
 	 * nif do Cliente
@@ -55,20 +54,12 @@ public abstract class ContaAbstrata {
 				+ "]";
 	}
 
-	public int getMontanteConta() {
+	public double getMontanteConta() {
 		return montanteConta;
 	}
 
 	public void setMontanteConta(int montanteConta) {
 		this.montanteConta = montanteConta;
-	}
-
-	public double getMontanteDepositado() {
-		return montanteDepositado;
-	}
-
-	public void setMontanteDepositado(double montanteDepositado) {
-		this.montanteDepositado = montanteDepositado;
 	}
 	
 	public abstract String getTpConta();
