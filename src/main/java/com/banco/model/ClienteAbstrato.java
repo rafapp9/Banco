@@ -1,13 +1,17 @@
 package com.banco.model;
 
+import java.time.LocalDate;
+
 public abstract class ClienteAbstrato extends PessoaAbstrata {
 	
 	private double montanteDepositado;
 
 	
-	public ClienteAbstrato(String id, String nome, double montanteDepositado) {
+	public ClienteAbstrato(String id, String nome, String sexo, LocalDate dataNascimento, double montanteDepositado) {
 		super.setId(id);
 		super.setNome(nome);
+		super.setSexo(sexo);
+		super.setDataNascimento(dataNascimento.getYear(), dataNascimento.getMonthValue(), dataNascimento.getDayOfMonth());
 		this.montanteDepositado = montanteDepositado;
 	}
 
