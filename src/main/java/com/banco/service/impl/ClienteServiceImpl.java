@@ -2,7 +2,6 @@ package com.banco.service.impl;
 
 import java.util.List;
 
-import com.banco.exceptions.ClienteValidateException;
 import com.banco.exceptions.NifException;
 import com.banco.model.ClienteAbstrato;
 import com.banco.repository.ClienteDAO;

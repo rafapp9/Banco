@@ -7,25 +7,25 @@ import static org.junit.Assert.assertNull;
 import java.time.LocalDate;
 import java.util.List;
 
-import org.junit.After;
 import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
 
+import com.banco.config.ClienteConfig;
 import com.banco.model.ClienteAbstrato;
 import com.banco.model.ClienteStandard;
 import com.banco.service.impl.ClienteServiceImpl;
-import com.banco.service.impl.ContaServiceImpl;
-
-import junit.framework.TestCase;
 
 public class ClienteServiceTest {
 
 	private static ClienteService service = new ClienteServiceImpl();
+	
+	@BeforeClass
+	public static void setup() {
+		// Initiate the ClienteConfig code before running any tests
+		ClienteConfig clienteConfig = new ClienteConfig();
+		clienteConfig.start();
+	}
 
 	@Test
 	public void create() {
