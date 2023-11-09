@@ -2,11 +2,20 @@ package com.banco.controller;
 
 import java.util.List;
 
+import org.junit.BeforeClass;
+
+import com.banco.config.FuncionarioConfig;
 import com.banco.model.FuncionarioAbstrato;
 import com.banco.service.FuncionarioService;
 import com.banco.service.impl.FuncionarioServiceImpl;
 
 public class FuncionarioController {
+	
+	@BeforeClass
+	public static void setup() {
+		// Initiate the FuncionarioConfig code before running any tests
+		FuncionarioConfig.start();
+	}
 
 	private FuncionarioService service;
 
