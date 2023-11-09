@@ -1,6 +1,12 @@
 package com.banco.model;
 
+import java.time.LocalDate;
+
 public class FuncionarioGerente extends FuncionarioAbstrato {
+
+	public FuncionarioGerente(String id, String nome, String sexo, LocalDate dataNascimento, double vendaMensal) {
+		super(id, nome, sexo, dataNascimento, vendaMensal);
+	}
 
 	/**
 	 * 
@@ -8,11 +14,6 @@ public class FuncionarioGerente extends FuncionarioAbstrato {
 	 * @param nome
 	 * @param vendaMensal
 	 */
-	public FuncionarioGerente(String id, String nome, double vendaMensal) {
-		setVendaMensal(vendaMensal);
-		super.setId(id);
-		super.setNome(nome);
-	}
 	
 	private double vendaMensal;
 

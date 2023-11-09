@@ -15,9 +15,10 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 	public FuncionarioServiceImpl() {
 		repository = new FuncionarioDAOImpl();
 	}
-	
+
 	@Override
 	public void create(FuncionarioAbstrato obj) throws NifException {
+
 		if (obj.getId().length() == 9) {
 
 			if (this.read(obj.getId()) != null) {
