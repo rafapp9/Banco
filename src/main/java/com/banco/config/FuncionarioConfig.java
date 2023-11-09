@@ -11,9 +11,9 @@ public class FuncionarioConfig {
 
 	public static void start() {
 		
-		FuncionarioAbstrato funcionario1 = new FuncionarioGerente("123456781", "Rafael Cunha", "Homem", LocalDate.of(1996, 7, 22), 100);
-		FuncionarioAbstrato funcionario2 = new FuncionarioGerente("234567543", "Miguel Cunha", "Homem", LocalDate.of(1970, 10, 12), 500);
-		FuncionarioAbstrato funcionario3 = new FuncionarioGerente("244564321", "Andre Galante", "Homem", LocalDate.of(2000, 1, 1), 50);
+		FuncionarioAbstrato funcionario1 = new FuncionarioGerente("467839276", "Rafael Cunha", "Homem", LocalDate.of(1996, 7, 22), 100);
+		FuncionarioAbstrato funcionario2 = new FuncionarioGerente("849362718", "Miguel Cunha", "Homem", LocalDate.of(1970, 10, 12), 500);
+		FuncionarioAbstrato funcionario3 = new FuncionarioGerente("937251678", "Andre Galante", "Homem", LocalDate.of(2000, 1, 1), 50);
 		
 		FuncionarioController controller = new FuncionarioController();
 		

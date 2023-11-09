@@ -7,13 +7,21 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.banco.config.FuncionarioConfig;
 import com.banco.model.FuncionarioAbstrato;
 import com.banco.model.FuncionarioGerente;
 import com.banco.service.impl.FuncionarioServiceImpl;
 
 public class FuncionarioServiceTest {
+	
+	@BeforeClass
+	public static void setup() {
+		// Initiate the FuncionarioConfig code before running any tests
+		FuncionarioConfig.start();
+	}
 	
 	private static FuncionarioService service = new FuncionarioServiceImpl();
 	
