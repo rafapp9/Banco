@@ -7,16 +7,25 @@ import static org.junit.Assert.assertNull;
 import java.util.List;
 
 import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.banco.config.ContaConfig;
+import com.banco.exceptions.ContaValidateException;
+import com.banco.exceptions.NifException;
 import com.banco.model.ContaAbstrata;
 import com.banco.model.ContaDTO;
 import com.banco.service.impl.ContaServiceImpl;
-import com.banco.service.impl.FuncionarioServiceImpl;
 
 public class ContaServiceTest {
 
 	private static ContaService service = new ContaServiceImpl();
+	
+	@BeforeClass
+	public static void setup() {
+		// Initiate the ContaConfig code before running any tests
+		ContaConfig.start();
+	}
 
 	@Test
 	public void readAll() {
@@ -37,9 +46,15 @@ public class ContaServiceTest {
 		assertEquals("123456785", contaRead.getId());
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test(expected = NifException.class)
 	public void createContaNifBlank() {
 		ContaDTO conta = new ContaDTO("", "9456778", 500);
+		service.create(conta);
+	}
+	
+	@Test(expected = ContaValidateException.class)
+	public void createContaLowAmount() {
+		ContaDTO conta = new ContaDTO("837421212", "9456778", 19);
 		service.create(conta);
 	}
 
