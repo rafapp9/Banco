@@ -1,9 +1,15 @@
 package com.banco.model;
 
+import java.time.LocalDate;
+import java.time.Month;
+
 public abstract class PessoaAbstrata {
 
 	private String nome;
 	private String id;
+	private String sexo;
+	private LocalDate dataNascimento;
+	
 
 	public String getNome() {
 		return nome;
@@ -19,6 +25,22 @@ public abstract class PessoaAbstrata {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public String getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+
+	public LocalDate getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(int ano, int mes, int dia) {
+		this.dataNascimento = LocalDate.of(ano, mes, dia);
 	}
 
 }
