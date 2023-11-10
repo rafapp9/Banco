@@ -9,6 +9,7 @@ import java.util.List;
 import org.junit.AfterClass;
 import org.junit.Test;
 
+import com.banco.exceptions.ContaException;
 import com.banco.exceptions.ContaValidateException;
 import com.banco.exceptions.NifException;
 import com.banco.model.ContaAbstrata;
@@ -69,6 +70,17 @@ public class ContaControllerTest {
 		service.delete("923456779");
 		ContaAbstrata contaEliminada = service.read("923456779");
 		assertNull(contaEliminada);
+	}
+	
+	@Test
+	public void creditAccount() throws ContaException {
+		ContaDTO conta = new ContaDTO("123456789", "245678", 500);
+		service.create(conta);
+
+		service.credit("123456789", 100);
+		ContaAbstrata contaAtualizada = service.read("123456789");
+		assertEquals(600.0, contaAtualizada.getMontanteConta(), 0.001);
+
 	}
 
 	@AfterClass
