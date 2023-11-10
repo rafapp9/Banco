@@ -84,4 +84,9 @@ public class ContaDAOImpl implements ContaDAO {
 		}
 		throw new ContaException();
 	}
+
+	@Override
+	public void clearRepository() {
+		dataBase.clear();
+	}
 }
