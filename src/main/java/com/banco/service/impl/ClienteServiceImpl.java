@@ -53,5 +53,10 @@ public class ClienteServiceImpl implements ClienteService {
 		repository.delete(id);
 
 	}
+	
+	@Override
+	public List<ClienteAbstrato> filterCltByAge(int age) {
+		return repository.filterCltByAge(age);
+	}
 
 }

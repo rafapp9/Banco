@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.banco.model.ClienteAbstrato;
+import com.banco.model.ClienteStandard;
 import com.banco.repository.ClienteDAO;
 
 public class ClienteDAOImpl implements ClienteDAO {
@@ -50,6 +51,21 @@ public class ClienteDAOImpl implements ClienteDAO {
 			}
 		}
 		return null;
+	}
+	
+	@Override
+	public List<ClienteAbstrato> filterCltByAge(int age) {
+		List<ClienteAbstrato> filter = new ArrayList<>();
+		for(ClienteAbstrato c : dataBase) {
+			if(c instanceof ClienteStandard ) {
+				ClienteStandard cliente = (ClienteStandard) c;
+				int clienteAge = cliente.calculateAge();
+				if(clienteAge >= age) {
+					filter.add(cliente);
+				}
+			}
+		}
+		return filter;
 	}
 
 
