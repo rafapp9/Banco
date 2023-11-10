@@ -89,5 +89,9 @@ public class ContaServiceImpl implements ContaService {
 		}
 
 	}
+	
+	public void clearRepository() {
+		repository.clearRepository();
+	}
 
 }

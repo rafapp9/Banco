@@ -14,10 +14,7 @@ public interface ContaService extends GenericCRUD<ContaAbstrata, String> {
 	List<ContaAbstrata> filterAccountByAmount(double montanteFiltro); 
 	
 	void create(ContaDTO contaDTO) throws ContaValidateException;
-
-	
 	ContaAbstrata credit(String id, double montante) throws ContaException;
-
 	ContaAbstrata debit(String id, double montante) throws ContaException, InsufficientBalanceException;
- 
+	void clearRepository();
 }
