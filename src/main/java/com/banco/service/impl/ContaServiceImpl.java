@@ -82,7 +82,8 @@ public class ContaServiceImpl implements ContaService {
 		double montanteAtual = conta.getMontanteConta();
 
 		if (montanteAtual >= montante) {
-			repository.debit(id, montanteAtual);
+			double novoMontante = montanteAtual - montante;
+			conta.setMontanteConta(novoMontante);
 			return conta;
 		} else {
 			throw new InsufficientBalanceException();
