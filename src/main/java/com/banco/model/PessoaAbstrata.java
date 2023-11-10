@@ -2,6 +2,7 @@ package com.banco.model;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.Period;
 
 public abstract class PessoaAbstrata {
 
@@ -42,5 +43,10 @@ public abstract class PessoaAbstrata {
 	public void setDataNascimento(int ano, int mes, int dia) {
 		this.dataNascimento = LocalDate.of(ano, mes, dia);
 	}
+	
+	   public int calculateAge() {
+	        LocalDate today = LocalDate.now();
+	        return Period.between(dataNascimento, today).getYears();
+	    }
 
 }
