@@ -80,7 +80,6 @@ public class ContaServiceImpl implements ContaService {
 		}
 
 		double montanteAtual = conta.getMontanteConta();
-
 		if (montanteAtual >= montante) {
 			double novoMontante = montanteAtual - montante;
 			conta.setMontanteConta(novoMontante);
