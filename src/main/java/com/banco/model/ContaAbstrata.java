@@ -3,9 +3,10 @@ package com.banco.model;
 import java.util.Date;
 
 public abstract class ContaAbstrata {
-	
-	public ContaAbstrata() {}
-	
+
+	public ContaAbstrata() {
+	}
+
 	public ContaAbstrata(String id, String numeroConta, Date dataCriacao, double montanteConta) {
 		this.id = id;
 		this.numeroConta = numeroConta;
@@ -50,18 +51,17 @@ public abstract class ContaAbstrata {
 
 	@Override
 	public String toString() {
-		return "ContaAbstrata [Id=" + id + ", numeroConta=" + numeroConta + ", dataCriacao=" + dataCriacao
-				+ "]";
+		return "ContaAbstrata [Id=" + id + ", numeroConta=" + numeroConta + ", dataCriacao=" + dataCriacao + "]";
 	}
 
 	public double getMontanteConta() {
 		return montanteConta;
 	}
 
-	public void setMontanteConta(int montanteConta) {
+	public void setMontanteConta(double montanteConta) {
 		this.montanteConta = montanteConta;
 	}
-	
+
 	public abstract String getTpConta();
 
 }

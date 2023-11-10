@@ -2,6 +2,8 @@ package com.banco.service.impl;
 
 import java.util.List;
 
+import com.banco.exceptions.ContaException;
+import com.banco.exceptions.InsufficientBalanceException;
 import com.banco.exceptions.NifException;
 import com.banco.model.ContaAbstrata;
 import com.banco.model.ContaDTO;
@@ -19,15 +21,15 @@ public class ContaServiceImpl implements ContaService {
 
 	@Override
 	public void create(ContaDTO contaDTO) throws NifException {
-		if(contaDTO.id() == null || contaDTO.id().isBlank()) {
+		if (contaDTO.id() == null || contaDTO.id().isBlank()) {
 			throw new NifException();
-		}else {
+		} else {
 			ContaAbstrata conta = FactoryConta.getConta(contaDTO);
 			create(conta);
 		}
-		
+
 	}
-	
+
 	@Override
 	public void create(ContaAbstrata obj) {
 		repository.create(obj);
@@ -57,6 +59,35 @@ public class ContaServiceImpl implements ContaService {
 	@Override
 	public List<ContaAbstrata> filterAccountByAmount(double montanteFiltro) {
 		return repository.filterAccountByAmount(montanteFiltro);
+	}
+
+	@Override
+	public ContaAbstrata credit(String id, double montante) throws ContaException {
+		ContaAbstrata conta = repository.read(id);
+		if (conta == null) {
+			throw new ContaException();
+		} else {
+			conta = repository.credit(id, montante);
+			return conta;
+		}
+	}
+
+	@Override
+	public ContaAbstrata debit(String id, double montante) throws ContaException, InsufficientBalanceException {
+		ContaAbstrata conta = repository.read(id);
+		if (conta == null) {
+			throw new ContaException();
+		}
+
+		double montanteAtual = conta.getMontanteConta();
+
+		if (montanteAtual >= montante) {
+			repository.debit(id, montanteAtual);
+			return conta;
+		} else {
+			throw new InsufficientBalanceException();
+		}
+
 	}
 
 }
