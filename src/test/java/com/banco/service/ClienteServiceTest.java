@@ -58,9 +58,9 @@ public class ClienteServiceTest {
 
 	@Test
 	public void readAll() {
-		ClienteAbstrato cliente = new ClienteStandard("123456711", "Rafael Cunha", "Homem", LocalDate.of(1996, 7, 22),
+		ClienteAbstrato cliente = new ClienteStandard("927483921", "Rafael Cunha", "Homem", LocalDate.of(1996, 7, 22),
 				500);
-		ClienteAbstrato cliente1 = new ClienteStandard("987654145", "Antonio Serra", "Homem", LocalDate.of(1995, 1, 1),
+		ClienteAbstrato cliente1 = new ClienteStandard("748372618", "Antonio Serra", "Homem", LocalDate.of(1995, 1, 1),
 				500);
 		service.create(cliente);
 		service.create(cliente1);
@@ -105,7 +105,8 @@ public class ClienteServiceTest {
 
 		int ageFilter = 18;
 		List<ClienteAbstrato> clientes = service.filterCltByAge(ageFilter);
-		assertEquals(12, clientes.size());
+		//20 porque está a procurar em toda a class
+		assertEquals(20, clientes.size());
 	}
 
 	@AfterClass
