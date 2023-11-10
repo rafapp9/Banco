@@ -7,8 +7,10 @@ import static org.junit.Assert.assertNull;
 import java.util.List;
 
 import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.banco.config.ContaConfig;
 import com.banco.exceptions.ContaException;
 import com.banco.exceptions.ContaValidateException;
 import com.banco.exceptions.InsufficientBalanceException;
@@ -19,6 +21,14 @@ import com.banco.model.ContaDTO;
 public class ContaControllerTest {
 
 	private static ContaController service = new ContaController();
+	
+	@BeforeClass
+	public static void setup() {
+		//Clear the repository before running all tests
+		service.clearRepository();
+		// Initiate the ContaConfig code before running any tests
+		ContaConfig.start();
+	}
 
 	@Test
 	public void readAll() {
@@ -99,7 +109,7 @@ public class ContaControllerTest {
 
 	@AfterClass
 	public static void cleanup() {
-		service = null;
+		service.clearRepository();
 	}
 
 }

@@ -50,5 +50,9 @@ public class ContaController {
 	public ContaAbstrata debit(String id, double montante) throws ContaException, InsufficientBalanceException {
 		return service.credit(id, montante);
 	}
+	
+	public void clearRepository() {
+		service.clearRepository();
+	}
 
 }

@@ -26,83 +26,85 @@ public class ClienteControllerTest {
 
 	@Test
 	public void create() {
-		ClienteAbstrato cliente = new ClienteStandard("355643211", "Rafael Cunha", "Homem", LocalDate.of(1996, 7, 22),
+		ClienteAbstrato cliente = new ClienteStandard("355643161", "Rafael Cunha", "Homem", LocalDate.of(1996, 7, 22),
 				500);
 		service.create(cliente);
-		ClienteAbstrato clienteRead = service.read("355643211");
-		assertEquals("355643211", clienteRead.getId());
+		ClienteAbstrato clienteRead = service.read("355643161");
+		assertEquals("355643161", clienteRead.getId());
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void createNifExist() {
-		ClienteAbstrato cliente = new ClienteStandard("234593011", "Rafael Cunha", "Homem", LocalDate.of(1996, 7, 22),
+		ClienteAbstrato cliente = new ClienteStandard("234582011", "Rafael Cunha", "Homem", LocalDate.of(1996, 7, 22),
 				500);
-		ClienteAbstrato cliente2 = new ClienteStandard("355643211", "Antonio Serra", "Homem", LocalDate.of(1995, 1, 1),
+		ClienteAbstrato cliente2 = new ClienteStandard("234582011", "Antonio Serra", "Homem", LocalDate.of(1995, 1, 1),
 				500);
 		service.create(cliente);
 		service.create(cliente2);
-		ClienteAbstrato clienteRead = service.read("234593011");
-		assertEquals("234593011", clienteRead.getId());
+		ClienteAbstrato clienteRead = service.read("234582011");
+		assertEquals("234582011", clienteRead.getId());
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void createNifMenor() {
-		ClienteAbstrato cliente = new ClienteStandard("12345628", "Rafael Cunha", "Homem", LocalDate.of(1996, 7, 22),
+		ClienteAbstrato cliente = new ClienteStandard("12325628", "Rafael Cunha", "Homem", LocalDate.of(1996, 7, 22),
 				500);
 		service.create(cliente);
-		assertEquals(null, service.read("12345628"));
+		assertEquals(null, service.read("12325628"));
 	}
 
 	@Test
 	public void readAll() {
-		ClienteAbstrato cliente = new ClienteStandard("123456711", "Rafael Cunha", "Homem", LocalDate.of(1996, 7, 22),
+		ClienteAbstrato cliente = new ClienteStandard("121156711", "Rafael Cunha", "Homem", LocalDate.of(1996, 7, 22),
 				500);
-		ClienteAbstrato cliente1 = new ClienteStandard("987654145", "Antonio Serra", "Homem", LocalDate.of(1995, 1, 1),
+		ClienteAbstrato cliente1 = new ClienteStandard("937644145", "Antonio Serra", "Homem", LocalDate.of(1995, 1, 1),
 				500);
 		service.create(cliente);
 		service.create(cliente1);
 
 		List<ClienteAbstrato> clientes = service.readAll();
 		assertNotNull(clientes);
-		assertEquals(11, clientes.size());
+		//8 porque está a procurar em toda a class
+		assertEquals(8, clientes.size());
 
 	}
 
 	@Test
 	public void update() {
-		ClienteAbstrato cliente = new ClienteStandard("123456735", "Rafael Cunha", "Homem", LocalDate.of(1996, 7, 22),
+		ClienteAbstrato cliente = new ClienteStandard("123156735", "Rafael Cunha", "Homem", LocalDate.of(1996, 7, 22),
 				500);
 		service.create(cliente);
 		cliente.setNome("Novo Nome");
-		service.update("123456735", cliente);
-		ClienteAbstrato clienteRead = service.read("123456735");
+		service.update("123156735", cliente);
+		ClienteAbstrato clienteRead = service.read("123156735");
 		assertEquals("Novo Nome", clienteRead.getNome());
 	}
 
 	@Test
 	public void delete() {
-		ClienteAbstrato cliente = new ClienteStandard("123456716", "Rafael Cunha", "Homem", LocalDate.of(1996, 7, 22),
+		ClienteAbstrato cliente = new ClienteStandard("125456716", "Rafael Cunha", "Homem", LocalDate.of(1996, 7, 22),
 				500);
-		ClienteAbstrato cliente2 = new ClienteStandard("234564351", "Antonio Serra", "Homem", LocalDate.of(1995, 1, 1),
+		ClienteAbstrato cliente2 = new ClienteStandard("233564351", "Antonio Serra", "Homem", LocalDate.of(1995, 1, 1),
 				500);
 		service.create(cliente);
 		service.create(cliente2);
-		service.delete("234564351");
-		ClienteAbstrato clienteEliminado = service.read("234564351");
+		service.delete("233564351");
+		ClienteAbstrato clienteEliminado = service.read("233564351");
 		assertNull(clienteEliminado);
 
 	}
 	
 	@Test
 	public void testFilterCltByAge() {
-		service.create(new ClienteStandard("123456775", "Rafael Cunha", "Homem", LocalDate.of(1996, 7, 22),
+		service.create(new ClienteStandard("123454775", "Rafael Cunha", "Homem", LocalDate.of(1996, 7, 22),
 				500));
-		service.create(new ClienteStandard("987654143", "Antonio Serra", "Homem", LocalDate.of(1995, 1, 1),
+		service.create(new ClienteStandard("923654143", "Antonio Serra", "Homem", LocalDate.of(1995, 1, 1),
 				500));
 
 		int ageFilter = 18;
 		List<ClienteAbstrato> clientes = service.filterCltByAge(ageFilter);
-		assertEquals(12, clientes.size());
+		//5 porque está a procurar em toda a class
+		assertEquals(5, clientes.size());
 	}
 
 	@AfterClass
