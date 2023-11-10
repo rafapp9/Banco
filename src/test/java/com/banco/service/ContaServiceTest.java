@@ -25,6 +25,8 @@ public class ContaServiceTest {
 
 	@BeforeClass
 	public static void setup() {
+		//Clear the repository before running all tests
+		service.clearRepository();
 		// Initiate the ContaConfig code before running any tests
 		ContaConfig.start();
 	}
@@ -106,7 +108,7 @@ public class ContaServiceTest {
 
 	@AfterClass
 	public static void cleanup() {
-		service = null;
+		service.clearRepository();
 	}
 
 }
