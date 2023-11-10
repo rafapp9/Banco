@@ -37,6 +37,10 @@ public class ContaController {
 	public List<ContaAbstrata> filterAccountByAmount(double i) {
 		return service.filterAccountByAmount(i);
 	}
+	
+	public List<ContaAbstrata> filterByNIF(String nif) {
+		return service.filterByNIF(nif);
+	}
 
 	public ContaAbstrata update(String string, ContaAbstrata obj) {
 		return service.update(string, obj);
@@ -48,7 +52,7 @@ public class ContaController {
 	}
 	
 	public ContaAbstrata debit(String id, double montante) throws ContaException, InsufficientBalanceException {
-		return service.credit(id, montante);
+		return service.debit(id, montante);
 	}
 	
 	public void clearRepository() {

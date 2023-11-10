@@ -20,9 +20,25 @@ public class MainBank {
 			option = scan.nextInt();
 			if(option == 1) {
 				menuContas(scan);
+			}else if(option == 2) {
+				menuClientes(scan);	
 			}
 		}
 		System.out.println("Programa Finalizado!");
+	}
+	
+	private static void menuClientes(Scanner scan) {
+		ContaController contas = new ContaController();
+		System.out.println(ConstantsGUI.SUBMENU_CLIENTES.getValue());
+		int option = scan.nextInt();
+		if(option == 3) {
+			System.out.println("Digite o NIF para pesquisa de contas:");
+			String nif = scan.next();
+			System.out.println("=====================");
+			contas.filterByNIF(nif).forEach(c -> {System.out.println("\nNúmero Conta: " + c.getNumeroConta() + " -- Montante:" + c.getMontanteConta());});
+			System.out.println("=====================");
+		}
+		
 	}
 	
 	private static void menuContas(Scanner scan) {

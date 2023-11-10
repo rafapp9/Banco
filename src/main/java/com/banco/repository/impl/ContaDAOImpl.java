@@ -14,7 +14,7 @@ public class ContaDAOImpl implements ContaDAO {
 
 	@Override
 	public void create(ContaAbstrata conta) {
-		dataBase.put(conta.getId(), conta);
+		dataBase.put(conta.getNumeroConta(), conta);
 	}
 
 	@Override
@@ -70,6 +70,7 @@ public class ContaDAOImpl implements ContaDAO {
 
 	@Override
 	public ContaAbstrata debit(String id, double montante) throws ContaException {
+		//TODO CALL debit in repository
 		ContaAbstrata conta = dataBase.get(id);
 
 		if (conta != null) {
@@ -88,5 +89,16 @@ public class ContaDAOImpl implements ContaDAO {
 	@Override
 	public void clearRepository() {
 		dataBase.clear();
+	}
+
+	@Override
+	public List<ContaAbstrata> filterByNIF(String nif) {
+		List<ContaAbstrata> contasFilter = new ArrayList<>();
+		dataBase.forEach((k, v) -> {
+			if(v.getId().equals(nif)) {
+				contasFilter.add(v);
+			}
+		});
+		return contasFilter;
 	}
 }

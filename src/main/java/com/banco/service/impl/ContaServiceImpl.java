@@ -74,6 +74,7 @@ public class ContaServiceImpl implements ContaService {
 
 	@Override
 	public ContaAbstrata debit(String id, double montante) throws ContaException, InsufficientBalanceException {
+		//TODO CALL debit in repository
 		ContaAbstrata conta = repository.read(id);
 		if (conta == null) {
 			throw new ContaException();
@@ -92,6 +93,11 @@ public class ContaServiceImpl implements ContaService {
 	
 	public void clearRepository() {
 		repository.clearRepository();
+	}
+
+	@Override
+	public List<ContaAbstrata> filterByNIF(String nif) {
+		return repository.filterByNIF(nif);
 	}
 
 }

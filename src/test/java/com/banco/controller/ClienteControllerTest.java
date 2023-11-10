@@ -7,18 +7,11 @@ import static org.junit.Assert.assertNull;
 import java.time.LocalDate;
 import java.util.List;
 
-import org.junit.After;
 import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.Test;
 
 import com.banco.model.ClienteAbstrato;
 import com.banco.model.ClienteStandard;
-import com.banco.model.ContaAbstrata;
-import com.banco.model.ContaDTO;
-import com.banco.service.ClienteService;
-import com.banco.service.ContaService;
-import com.banco.service.impl.ContaServiceImpl;
 
 public class ClienteControllerTest {
 
@@ -96,15 +89,14 @@ public class ClienteControllerTest {
 	
 	@Test
 	public void testFilterCltByAge() {
-		service.create(new ClienteStandard("123454775", "Rafael Cunha", "Homem", LocalDate.of(1996, 7, 22),
-				500));
-		service.create(new ClienteStandard("923654143", "Antonio Serra", "Homem", LocalDate.of(1995, 1, 1),
+		service.create(new ClienteStandard("123454775", "Rafael Cunha", "Homem", LocalDate.of(2005, 11, 9),
 				500));
 
 		int ageFilter = 18;
 		List<ClienteAbstrato> clientes = service.filterCltByAge(ageFilter);
-		//5 porque está a procurar em toda a class
-		assertEquals(5, clientes.size());
+		List<ClienteAbstrato> clienteFilter = clientes.stream().filter(cli -> cli.getId().equals("123454775")).toList();
+		
+		assertNotNull(clienteFilter.get(0));
 	}
 
 	@AfterClass
