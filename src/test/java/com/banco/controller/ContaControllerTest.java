@@ -11,6 +11,7 @@ import org.junit.Test;
 
 import com.banco.exceptions.ContaException;
 import com.banco.exceptions.ContaValidateException;
+import com.banco.exceptions.InsufficientBalanceException;
 import com.banco.exceptions.NifException;
 import com.banco.model.ContaAbstrata;
 import com.banco.model.ContaDTO;
@@ -43,7 +44,7 @@ public class ContaControllerTest {
 		ContaDTO conta = new ContaDTO("", "9456778", 500);
 		service.create(conta);
 	}
-	
+
 	@Test(expected = ContaValidateException.class)
 	public void createContaLowAmount() {
 		ContaDTO conta = new ContaDTO("837421212", "9456778", 19);
@@ -71,7 +72,7 @@ public class ContaControllerTest {
 		ContaAbstrata contaEliminada = service.read("923456779");
 		assertNull(contaEliminada);
 	}
-	
+
 	@Test
 	public void creditAccount() throws ContaException {
 		ContaDTO conta = new ContaDTO("123456789", "245678", 500);
@@ -80,6 +81,19 @@ public class ContaControllerTest {
 		service.credit("123456789", 100);
 		ContaAbstrata contaAtualizada = service.read("123456789");
 		assertEquals(600.0, contaAtualizada.getMontanteConta(), 0.001);
+
+	}
+
+	@Test
+	public void debitAccount() throws ContaException, InsufficientBalanceException {
+		ContaDTO conta = new ContaDTO("123456329", "245278", 500);
+		service.create(conta);
+
+		service.debit("123456329", 100);
+		ContaAbstrata contaAtualizada = service.read("123456329");
+		//600 porque está a ir buscar dados ao ContaServiceTest
+		assertEquals(600.0, contaAtualizada.getMontanteConta(), 0.001);
+
 
 	}
 
