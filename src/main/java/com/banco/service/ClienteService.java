@@ -8,5 +8,5 @@ import com.banco.repository.GenericCRUD;
 public interface ClienteService extends GenericCRUD<ClienteAbstrato, String> {
 
 	List<ClienteAbstrato> filterCltByAge(int age);
- 
+	
 }
