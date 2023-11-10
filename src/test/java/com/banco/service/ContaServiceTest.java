@@ -13,6 +13,7 @@ import org.junit.Test;
 import com.banco.config.ContaConfig;
 import com.banco.exceptions.ContaException;
 import com.banco.exceptions.ContaValidateException;
+import com.banco.exceptions.InsufficientBalanceException;
 import com.banco.exceptions.NifException;
 import com.banco.model.ContaAbstrata;
 import com.banco.model.ContaDTO;
@@ -89,6 +90,17 @@ public class ContaServiceTest {
 		service.credit("123456789", 100);
 		ContaAbstrata contaAtualizada = service.read("123456789");
 		assertEquals(600.0, contaAtualizada.getMontanteConta(), 0.001);
+
+	}
+	
+	@Test
+	public void debitAccount() throws ContaException, InsufficientBalanceException {
+		ContaDTO conta = new ContaDTO("123456329", "245278", 500);
+		service.create(conta);
+
+		service.debit("123456329", 100);
+		ContaAbstrata contaAtualizada = service.read("123456329");
+		assertEquals(400.0, contaAtualizada.getMontanteConta(), 0.001);
 
 	}
 
