@@ -11,6 +11,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.banco.config.ContaConfig;
+import com.banco.exceptions.ContaException;
 import com.banco.exceptions.ContaValidateException;
 import com.banco.exceptions.NifException;
 import com.banco.model.ContaAbstrata;
@@ -20,7 +21,7 @@ import com.banco.service.impl.ContaServiceImpl;
 public class ContaServiceTest {
 
 	private static ContaService service = new ContaServiceImpl();
-	
+
 	@BeforeClass
 	public static void setup() {
 		// Initiate the ContaConfig code before running any tests
@@ -51,7 +52,7 @@ public class ContaServiceTest {
 		ContaDTO conta = new ContaDTO("", "9456778", 500);
 		service.create(conta);
 	}
-	
+
 	@Test(expected = ContaValidateException.class)
 	public void createContaLowAmount() {
 		ContaDTO conta = new ContaDTO("837421212", "9456778", 19);
@@ -78,6 +79,17 @@ public class ContaServiceTest {
 		service.delete("923456779");
 		ContaAbstrata contaEliminada = service.read("923456779");
 		assertNull(contaEliminada);
+	}
+
+	@Test
+	public void creditAccount() throws ContaException {
+		ContaDTO conta = new ContaDTO("123456789", "245678", 500);
+		service.create(conta);
+
+		service.credit("123456789", 100);
+		ContaAbstrata contaAtualizada = service.read("123456789");
+		assertEquals(600.0, contaAtualizada.getMontanteConta(), 0.001);
+
 	}
 
 	@AfterClass
