@@ -2,7 +2,9 @@ package com.banco.controller;
 
 import java.util.List;
 
+import com.banco.exceptions.ContaException;
 import com.banco.exceptions.ContaValidateException;
+import com.banco.exceptions.InsufficientBalanceException;
 import com.banco.model.ContaAbstrata;
 import com.banco.model.ContaDTO;
 import com.banco.service.ContaService;
@@ -39,6 +41,14 @@ public class ContaController {
 	public ContaAbstrata update(String string, ContaAbstrata obj) {
 		return service.update(string, obj);
 		
+	}
+	
+	public ContaAbstrata credit(String id, double montante) throws ContaException {
+		return service.credit(id, montante);
+	}
+	
+	public ContaAbstrata debit(String id, double montante) throws ContaException, InsufficientBalanceException {
+		return service.credit(id, montante);
 	}
 
 }
