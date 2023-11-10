@@ -92,6 +92,18 @@ public class ClienteControllerTest {
 		assertNull(clienteEliminado);
 
 	}
+	
+	@Test
+	public void testFilterCltByAge() {
+		service.create(new ClienteStandard("123456775", "Rafael Cunha", "Homem", LocalDate.of(1996, 7, 22),
+				500));
+		service.create(new ClienteStandard("987654143", "Antonio Serra", "Homem", LocalDate.of(1995, 1, 1),
+				500));
+
+		int ageFilter = 18;
+		List<ClienteAbstrato> clientes = service.filterCltByAge(ageFilter);
+		assertEquals(12, clientes.size());
+	}
 
 	@AfterClass
 	public static void cleanup() {

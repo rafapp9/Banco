@@ -33,5 +33,9 @@ public class ClienteController {
 	public void delete(String id) {
 		service.delete(id);
 	}
+	
+	public List<ClienteAbstrato> filterCltByAge(int age) {
+		return service.filterCltByAge(age);
+	}
 
 }
