@@ -2,6 +2,7 @@ package com.banco.gui;
 
 import java.util.Scanner;
 
+import com.banco.config.ClienteConfig;
 import com.banco.config.ContaConfig;
 import com.banco.controller.ContaController;
 import com.banco.model.ContaDTO;
@@ -13,6 +14,7 @@ public class MainBank {
 		Scanner scan = new Scanner(System.in);
 		int option = 0;
 
+		ClienteConfig.start();
 		ContaConfig.start();
 
 		while (option != 99) {
