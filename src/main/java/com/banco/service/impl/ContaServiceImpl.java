@@ -44,6 +44,7 @@ public class ContaServiceImpl implements ContaService {
 	            ContaAbstrata conta = FactoryConta.getConta(contaDTO);
 	            create(conta);
 	        } else {
+	        	//TODO catch in GUI
 	            throw new NifException();
 	        }
 	    }
