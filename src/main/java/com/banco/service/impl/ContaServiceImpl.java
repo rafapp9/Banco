@@ -1,6 +1,9 @@
 package com.banco.service.impl;
 
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import com.banco.exceptions.ContaException;
 import com.banco.exceptions.InsufficientBalanceException;
@@ -93,7 +96,6 @@ public class ContaServiceImpl implements ContaService {
 
 	@Override
 	public ContaAbstrata debit(String id, double montante) throws ContaException, InsufficientBalanceException {
-		// TODO CALL debit in repository
 		ContaAbstrata conta = repository.read(id);
 		if (conta == null) {
 			throw new ContaException();
@@ -119,5 +121,36 @@ public class ContaServiceImpl implements ContaService {
 	public List<ContaAbstrata> filterByNIF(String nif) {
 		return repository.filterByNIF(nif);
 	}
+	
+	@Override
+	public ContaAbstrata directDebit(String id, double montante) throws ContaException, InsufficientBalanceException {
+	    ContaAbstrata conta = repository.read(id);
+	    if (conta == null) {
+	        throw new ContaException();
+	    }
+
+	    double montanteAtual = conta.getMontanteConta();
+	    if (montanteAtual >= montante) {
+	        double novoMontante = montanteAtual - montante;
+	        conta.setMontanteConta(novoMontante);
+	        repository.update(id, conta);
+	        return conta;
+	    } else {
+	        throw new InsufficientBalanceException();
+	    }
+	}
+	
+	private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+
+    public void scheduleMonthlyDirectDebit(String conta, double montante, int dayOfMonth) {
+        scheduler.scheduleAtFixedRate(() -> {
+            try {
+                directDebit(conta, montante);
+            } catch (ContaException e) {
+                e.printStackTrace();
+            }
+        }, 0, 30, TimeUnit.DAYS);
+    }
+	
 
 }

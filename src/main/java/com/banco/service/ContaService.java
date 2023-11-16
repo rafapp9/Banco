@@ -16,6 +16,9 @@ public interface ContaService extends GenericCRUD<ContaAbstrata, String> {
 	void create(ContaDTO contaDTO) throws ContaValidateException;
 	ContaAbstrata credit(String id, double montante) throws ContaException;
 	ContaAbstrata debit(String id, double montante) throws ContaException, InsufficientBalanceException;
+	ContaAbstrata directDebit(String id, double montante) throws ContaException, InsufficientBalanceException;
 	void clearRepository();
 	List<ContaAbstrata> filterByNIF(String nif);
+
+	
 }

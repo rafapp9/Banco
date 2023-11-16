@@ -11,6 +11,7 @@ public interface ContaDAO extends GenericCRUD<ContaAbstrata, String> {
 
 	ContaAbstrata credit(String id, double montante) throws ContaException;
 	ContaAbstrata debit(String id, double montante) throws ContaException;
+	ContaAbstrata directDebit(String id, double montante) throws ContaException;
     void clearRepository();
 	List<ContaAbstrata> filterByNIF(String nif);
 	

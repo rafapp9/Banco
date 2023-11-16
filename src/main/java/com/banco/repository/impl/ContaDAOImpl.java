@@ -99,4 +99,21 @@ public class ContaDAOImpl implements ContaDAO {
 		});
 		return contasFilter;
 	}
+	
+	@Override
+	public ContaAbstrata directDebit(String id, double montante) throws ContaException {
+	    // TODO CALL directDebit in repository
+	    ContaAbstrata conta = dataBase.get(id);
+
+	    if (conta != null) {
+	        double montanteAtual = conta.getMontanteConta();
+	        if (montanteAtual >= montante) {
+	            double montanteAtualizado = montanteAtual - montante;
+	            conta.setMontanteConta(montanteAtualizado);
+	            dataBase.replace(id, conta);
+	            return conta;
+	        }
+	    }
+	    throw new ContaException();
+	}
 }
