@@ -18,8 +18,6 @@ public class ContaDAOImpl implements ContaDAO {
 	}
 
 	@Override
-	// retorna uma lista de todas as contas convertendo os valores do map dataBase
-	// em uma lista.
 	public List<ContaAbstrata> readAll() {
 		return List.copyOf(dataBase.values());
 	}
@@ -78,7 +76,7 @@ public class ContaDAOImpl implements ContaDAO {
 			if (montanteAtual >= montante) {
 				double montanteAtualizado = montanteAtual - montante;
 				conta.setMontanteConta(montanteAtualizado);
-
+				dataBase.replace(id, conta);
 				dataBase.put(id, conta);
 				return conta;
 			}

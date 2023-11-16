@@ -44,7 +44,6 @@ public class ContaServiceImpl implements ContaService {
 	            ContaAbstrata conta = FactoryConta.getConta(contaDTO);
 	            create(conta);
 	        } else {
-	        	//TODO catch in GUI
 	            throw new NifException();
 	        }
 	    }
@@ -104,6 +103,7 @@ public class ContaServiceImpl implements ContaService {
 		if (montanteAtual >= montante) {
 			double novoMontante = montanteAtual - montante;
 			conta.setMontanteConta(novoMontante);
+			repository.update(id, conta);
 			return conta;
 		} else {
 			throw new InsufficientBalanceException();
